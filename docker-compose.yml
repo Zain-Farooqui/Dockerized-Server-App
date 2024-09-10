@@ -1,0 +1,14 @@
+version: '3'
+services:
+  backend:
+    image: python:3.9-slim  # Use Python 3.9 slim image
+    container_name: python_backend
+    volumes:
+      - /servervol:/serverdata  # Host directory mapped to /serverdata inside the container
+    ports:
+      - "8000:8000"  # Expose port 8000
+    working_dir: /app  # Working directory inside the container
+    command: python Python_server.py  # Command to run your Python server
+    build:
+      context: .
+    restart: always  # Restart the container automatically if it stops
